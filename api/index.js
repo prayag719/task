@@ -2,6 +2,15 @@ import express from "express";
 import serverless from "serverless-http";
 import cors from "cors";
 import { fetchTasks, createTasks, updateTasks, deleteTasks } from "./task.js";
+import Amplify from 'aws-amplify';
+
+Amplify.configure({
+    Auth: {
+        region: 'us-west-1', // replace with your region
+        userPoolId: 'us-west-1_910JwO0sT', // replace with your User Pool ID
+        userPoolWebClientId: '1jmdfm225d1nlaohs18nnt62eh', // replace with your User Pool Web Client ID
+    }
+});
 
 const app = express();
 const port = 3001;
